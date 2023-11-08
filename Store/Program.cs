@@ -12,8 +12,8 @@ builder.Services.AddHttpClient<ProductService>(c =>
 });
 
 // Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddServerComponents();
+builder.Services.AddRazorComponents();
+    //.AddServerComponents();
 
 var app = builder.Build();
 
@@ -25,11 +25,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseAntiforgery();
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.MapRazorComponents<App>()
-    .AddServerRenderMode();
+app.MapRazorComponents<App>();
+    //.AddServerRenderMode();
 
 app.Run();
